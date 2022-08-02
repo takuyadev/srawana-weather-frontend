@@ -10,9 +10,9 @@ const Button = styled.button `
     cursor:pointer;
 `
 
-function PrimaryButton({children, handleOnClick}){
+function PrimaryButton({children, type, handleOnClick}){
     return ( 
-        <Button onClick={handleOnClick}>
+        <Button type={type} onClick={handleOnClick}>
             {children}
         </Button>
     )
@@ -20,7 +20,7 @@ function PrimaryButton({children, handleOnClick}){
 
 PrimaryButton.defaultProps = {
     children: "Text",
-    handleOnClick: ()=>console.log("clicked!")
+    type: "default",
 }
 
 export { PrimaryButton }
