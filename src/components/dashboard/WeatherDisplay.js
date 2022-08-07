@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  display: flex;
+  gap: 1em;
   padding: 1em;
 `;
 
@@ -15,7 +17,7 @@ function WeatherDisplay({ temp, icon }) {
   return (
     <Container>
       <Icon src={`https://openweathermap.org/img/w/${icon}.png`}></Icon>
-      <DegreeText>{temp}</DegreeText>
+      <DegreeText>{temp}&#176;</DegreeText>
     </Container>
   );
 }

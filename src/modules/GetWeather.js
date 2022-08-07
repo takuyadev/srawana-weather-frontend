@@ -2,14 +2,15 @@ import axios from "axios";
 
 const getWeatherByCoords = async position => {
   const { latitude, longitude } = position;
-  const request = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=a00f189b8dbfcea63e95c84fa40bf1b7`;
+  const request = `https://api.openweathermap.org/data/2.5/forecast/?lat=${latitude}&lon=${longitude}&cnt=7&appid=a00f189b8dbfcea63e95c84fa40bf1b7`;
   if (position) {
     try {
       const response = await axios.get(request);
       const data = response.data;
+      console.log(data)
       return data;
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 };
@@ -22,7 +23,7 @@ const getWeatherByCity = async city => {
       const data = response.data;
       return data;
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   }
 };

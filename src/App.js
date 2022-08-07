@@ -1,27 +1,45 @@
 // Node Modules\
+import styled from "styled-components";
 import { useEffect, useState } from "react";
 
 // Functions
 import { getWeatherByCoords, getWeatherByCity } from "./modules/GetWeather";
 import { getKelvinToCelcius } from "./modules/Converter";
 
+
 //Components
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import { PrimaryButton } from "./components/Buttons";
-import TextField from "./components/TextField"
-import Container from "./components/Container";
-import WeatherDisplay from "./components/WeatherDisplay";
-import LoadingCircle from "./components/LoadingCircle";
+import { Sidebar } from "./components/sidebar/Sidebar";
+import Footer from "./components/footer/Footer";
+import { PrimaryButton } from "./components/general/Buttons";
+import TextField from "./components/general/TextField";
+import Container from "./components/general/Container";
+import WeatherDisplay from "./components/dashboard/WeatherDisplay";
+import LoadingCircle from "./components/general/LoadingCircle";
+
+//Styled Components
+
+const Main = styled.main`
+  margin: 0 2em;
+  grid-area: dashboard;
+  grid-column: span 8
+`;
+
+const AppDiv = styled.div`
+  display: grid;
+  grid-template-areas: "sidebar dashboard";
+  grid-template-columns: repeat(10, 1fr);
+  flex-direction: row;
+  gap: 2em;
+`;
 
 function App() {
   const [position, setPosition] = useState({});
-  const [query, setQuery] = useState()
-  const [city, setCity] = useState("")
+  const [query, setQuery] = useState();
+  const [city, setCity] = useState("");
   const [weather, setWeather] = useState();
 
   const updateWeatherData = async (callback, data) => {
-    setWeather(null)
+    setWeather(null);
     position && setWeather(await callback(data));
   };
 
@@ -35,10 +53,10 @@ function App() {
     });
   };
 
-  const submitCity = (e) => {
-    e.preventDefault()
-    setCity(query)
-  }
+  const submitCity = e => {
+    e.preventDefault();
+    setCity(query);
+  };
 
   useEffect(() => {
     getCurrentPosition();
@@ -48,29 +66,32 @@ function App() {
     updateWeatherData(getWeatherByCoords, position);
   }, [position]);
 
-  useEffect(()=>{
-    updateWeatherData(getWeatherByCity, city)
-  },[city])
+  useEffect(() => {
+    updateWeatherData(getWeatherByCity, city);
+  }, [city]);
 
   return (
-    <div className="App">
-      <Header />
-      <Container>
-        {weather ? (
-          <WeatherDisplay
-            temp={getKelvinToCelcius(weather.main.temp).toFixed(0)}
-            icon={weather.weather[0].icon}
-          />
-        ) : (
-          <LoadingCircle />
-        )}
-        <form onSubmit={submitCity}>
-          <TextField handleOnChange={(e)=>setQuery(e.target.value)}></TextField>
-          <PrimaryButton type="submit"> Get Location</PrimaryButton>
-        </form>
-      </Container>
-      <Footer />
-    </div>
+    <AppDiv>
+      <Sidebar/>
+      <Main>
+        <Container>
+          {weather ? (
+            <WeatherDisplay
+              temp={getKelvinToCelcius(weather.list[0].main.temp).toFixed(0)}
+              icon={weather.list[0].weather[0].icon}
+            />
+          ) : (
+            <LoadingCircle />
+          )}
+          <form onSubmit={submitCity}>
+            <TextField
+              handleOnChange={e => setQuery(e.target.value)}
+            ></TextField>
+            <PrimaryButton type="submit"> Get Location</PrimaryButton>
+          </form>
+        </Container>
+      </Main>
+    </AppDiv>
   );
 }
 

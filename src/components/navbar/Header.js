@@ -6,14 +6,14 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
 `;
 
-const HeadingLogo = styled.h1`
-  font-size: 2rem;
+const HeadingLogo = styled.h1`  
+  font-size: ${props => props.theme.fontSize["xl"]}
 `;
 
 function Header() {
   return (
     <HeaderContainer>
-      <HeadingLogo>Weather App</HeadingLogo>
+      <HeadingLogo>Cast</HeadingLogo>
     </HeaderContainer>
   );
 }
