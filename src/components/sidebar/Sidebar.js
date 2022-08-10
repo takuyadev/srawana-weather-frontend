@@ -28,7 +28,7 @@ const MainContainer = styled.nav`
   padding: 2em;
   background: ${props => props.theme.colors.gray["100"]};
 
-  @media (max-width: 800px){
+  @media (max-width: 900px){
     display:none;
   }
 `;
