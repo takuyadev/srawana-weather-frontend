@@ -1,13 +1,26 @@
 import styled from "styled-components";
 
 const InputField = styled.input`
-  padding: 0.5em 1em;
+  padding: 1em 1em;
   width: 100%;
+  border-radius: 8px;
+  border: none;
+  background: ${props => props.theme.colors.gray["100"]};
+
+  &::placeholder {
+    color: ${props => props.theme.colors.gray["600"]};
+    font-family: "Poppins";
+  }
+
+  &[type="text"] {
+    color: ${props => props.theme.colors.gray["800"]};
+    font-family: "Poppins", sans-serif;
+  }
+
 `;
 
-function TextField({handleOnChange}) {
-  return <InputField onChange={handleOnChange}/>;
+function TextField({ handleOnChange, placeholder }) {
+  return <InputField onChange={handleOnChange} placeholder={placeholder} />;
 }
-
 
 export default TextField;

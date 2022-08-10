@@ -10,7 +10,12 @@ const StyledButton = styled.button`
 
 const StyledPrimaryButton = styled(StyledButton)`
     background ${props => props.theme.colors.primary["500"]};
-    color: white;
+    color: ${props => props.theme.colors.gray["0"]};
+`;
+
+const StyledSecondaryButton = styled(StyledButton)`
+    background ${props => props.theme.colors.gray["100"]};
+    color: ${props => props.theme.colors.gray["500"]};;
 `;
 
 // Primary Button
@@ -28,4 +33,13 @@ PrimaryButton.defaultProps = {
   type: "default"
 };
 
-export { PrimaryButton };
+// Secondary Button
+function SecondaryButton({ children, type, handleOnClick }) {
+  return (
+    <StyledSecondaryButton type={type} onClick={handleOnClick}>
+      {children}
+    </StyledSecondaryButton>
+  );
+}
+
+export { PrimaryButton, SecondaryButton };

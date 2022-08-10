@@ -12,8 +12,8 @@ const NavLink = styled.a`
   gap: 1em;
   color: ${props => props.theme.colors.gray["600"]};
   font-size: ${props => props.theme.fontSize["s"]};
-  font-weight: bold;
   text-decoration: none;
+  text-overflow: ellipsis;
 
   &:hover {
     color: ${props => props.theme.colors.primary["500"]};
