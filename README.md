@@ -1,4 +1,4 @@
-# Design created by Srawana
+# Challenge: Developing Design by Swrana to a usable website
 
 For this project, the challenge is to create a very in-depth weather app using OpenWeatherAPI as well as recreating the desig provided by Srawana. The design was fully created by Syahrul Falah, and recreated only for educational purposes, and not meant for theft o any other purposes.
 
