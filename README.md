@@ -21,3 +21,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - npm start (start application)
 
 
+### `APIs`
+
+#### Documentation 
+
+https://openweathermap.org/api/one-call-3
+
+#### Calls
+
+GET (Forecast for the week): https://api.openweathermap.org/data/2.5/forecast/?lat=${latitude}&lon=${longitude}&cnt=7&appid={API_KEY}
+GET (Location Weather): https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={API_KEY}`;
+
