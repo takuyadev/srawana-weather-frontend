@@ -14,10 +14,17 @@ import Forecast from "./components/forecast/Forecast";
 
 const AppContainer = styled.div`
   display: grid;
+  justify-content: stretch;
   grid-template-areas: "sidebar dashboard forecast";
   grid-template-columns: repeat(10, 1fr);
   flex-direction: row;
-  gap: 2em;
+  gap: 1em;
+
+  @media (max-width: 900px){
+    grid-template-areas: 
+      "sidebar dashboard"
+      "sidebar forecast";
+  }
 `;
 
 function App() {

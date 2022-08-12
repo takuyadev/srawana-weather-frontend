@@ -6,8 +6,8 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 1em;
-  border-radius: 8px;
   padding: 1em;
+  border-radius: 8px;
   background: ${props => props.theme.colors.gray["0"]}11;
   border: 1px solid ${props => props.theme.colors.gray["200"]};
 `;

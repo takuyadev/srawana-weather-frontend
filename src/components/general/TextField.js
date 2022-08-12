@@ -12,11 +12,9 @@ const InputField = styled.input`
     font-family: "Poppins";
   }
 
-  &[type="text"] {
+  & {
     color: ${props => props.theme.colors.gray["800"]};
-    font-family: "Poppins", sans-serif;
   }
-
 `;
 
 function TextField({ handleOnChange, placeholder }) {
