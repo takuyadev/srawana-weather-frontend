@@ -6,7 +6,10 @@ For this project, the challenge is to create a very in-depth weather app using O
 
 ### `Language`
 
-React, axios, styled-components, framer-motion
+- React 
+- axios
+- styled-components
+- framer-motion
 
 ### `Credit / Link to Design` 
 
