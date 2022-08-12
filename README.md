@@ -17,7 +17,7 @@ https://dribbble.com/shots/18425258-Srawana-Weather-Dashboard-Design
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 #### Commands
-- npm (install application for development)
+- npm install (install application for development)
 - npm start (start application)
 
 
