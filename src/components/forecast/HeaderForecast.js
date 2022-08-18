@@ -1,3 +1,6 @@
+// Node Modules
+import { useContext } from "react";
+import { TimeContext } from "../../modules/TimeContext";
 import styled from "styled-components";
 
 const Header = styled.header`
@@ -22,16 +25,16 @@ const UserInfoContainer = styled.div`
   }
 `;
 
-function HeaderForecast({name, location, time}) {
+function HeaderForecast({ location, name }) {
+  const { time } = useContext(TimeContext);
   return (
     <Header>
       <UserInfoContainer>
-        <h2>{name}</h2>
-        <p>{location}</p>
+        <h2>{location}</h2>
       </UserInfoContainer>
       <Time>{time}</Time>
     </Header>
   );
 }
 
-export default HeaderForecast
+export default HeaderForecast;

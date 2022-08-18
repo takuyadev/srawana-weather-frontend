@@ -1,3 +1,4 @@
+// Node Modules
 import styled from "styled-components";
 import {
   UilTachometerFastAlt,
@@ -8,6 +9,8 @@ import {
   UilSetting,
   UilSignout
 } from "@iconscout/react-unicons";
+
+// Components
 import NavItem from "./NavItem";
 
 const TopContainer = styled.div`
@@ -18,6 +21,7 @@ const TopContainer = styled.div`
 
 const MainContainer = styled.nav`
   display: flex;
+  position: sticky;
   flex-direction: column;
   justify-content: space-between;
   grid-area: sidebar;
@@ -28,8 +32,22 @@ const MainContainer = styled.nav`
   padding: 2em;
   background: ${props => props.theme.colors.gray["100"]};
 
-  @media (max-width: 900px){
-    display:none;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: #f5f7fc;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4d65b4;
+    border-radius: 10px;
+  }
+
+  @media (max-width: 900px) {
+    display: none;
   }
 `;
 
@@ -60,34 +78,22 @@ function Sidebar() {
         </LogoContainer>
         <NavContainer>
           <NavItem
-            href="google.ca"
+            href="/"
             icon={<UilTachometerFastAlt />}
             text="Dashboard"
           ></NavItem>
-          <NavItem href="google.ca" icon={<UilMap />} text="Map"></NavItem>
+          <NavItem href="/" icon={<UilMap />} text="Map"></NavItem>
           <NavItem
-            href="google.ca"
+            href="/"
             icon={<UilMapPin />}
             text="Saved Location"
           ></NavItem>
-          <NavItem
-            href="google.ca"
-            icon={<UilCalendarAlt />}
-            text="Calendar"
-          ></NavItem>
+          <NavItem href="/" icon={<UilCalendarAlt />} text="Calendar"></NavItem>
         </NavContainer>
       </TopContainer>
       <NavContainer>
-        <NavItem
-          href="google.ca"
-          icon={<UilSetting />}
-          text="Settings"
-        ></NavItem>
-        <NavItem
-          href="google.ca"
-          icon={<UilSignout />}
-          text="Logout Account"
-        ></NavItem>
+        <NavItem href="/" icon={<UilSetting />} text="Settings"></NavItem>
+        <NavItem href="/" icon={<UilSignout />} text="Logout Account"></NavItem>
       </NavContainer>
     </MainContainer>
   );

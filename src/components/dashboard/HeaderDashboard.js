@@ -1,10 +1,14 @@
 // Node Modules
+import { useState, useContext } from "react";
 import styled from "styled-components";
-import { UilBell, UilUser } from "@iconscout/react-unicons";
+import { AnimatePresence } from "framer-motion";
+import { UilBell, UilUser, UilBars } from "@iconscout/react-unicons";
+import { TimeContext } from "../../modules/TimeContext";
 
 // Components
 import TextField from "../general/TextField";
-import { SecondaryButton } from "../general/Buttons";
+import { PrimaryButton, SecondaryButton } from "../general/Buttons";
+import MobileMenu from "../navbar/MobileMenu";
 
 // Styled Components
 const DashboardHeader = styled.div`
@@ -13,8 +17,7 @@ const DashboardHeader = styled.div`
   align-items: center;
   gap: 1em;
   margin-top: 2em;
-
-  @media (max-width: 900px) {
+  @media (max-width: 1200px) {
     grid-template-areas:
       "date buttons"
       "textfield textfield";
@@ -39,28 +42,61 @@ const DateContainer = styled.div`
 const ButtonsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  gap: 1em;
   grid-area: buttons;
+  gap: 1em;
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
-const TextFieldContainer = styled.div`
-  grid-area: textfield;
+const MenuButton = styled.div`
+  display: none;
+  cursor: pointer;
   justify-self: flex-end;
+  grid-area: buttons;
+  @media (max-width: 900px) {
+    display: block;
+  }
 `;
 
-function HeaderDashboard({ setQuery }) {
+const TextFieldContainer = styled.form`
+  display: flex;
+  gap: 1em;
+  grid-area: textfield;
+  justify-self: stretch;
+
+  @media (max-width: 900px) {
+    justify-self: auto;
+  }
+`;
+
+function HeaderDashboard({ setQuery, submitCity }) {
+  const { date } = useContext(TimeContext);
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <DashboardHeader>
+      <AnimatePresence>
+        {isOpen && <MobileMenu setIsOpen={setIsOpen} isOpen={isOpen} />}
+      </AnimatePresence>
       <DateContainer>
-        <h2>January 2022</h2>
-        <p>Thursday, Jan 4, 2022</p>
+        <h2>
+          {date.month} {date.year}
+        </h2>
+        <p>
+          {date.day}, {date.month} {date.date}, {date.year}
+        </p>
       </DateContainer>
-      <TextFieldContainer>
+      <TextFieldContainer onSubmit={submitCity}>
         <TextField
           handleOnChange={e => setQuery(e.target.value)}
           placeholder="Search location here"
         ></TextField>
+        <PrimaryButton type="submit">Search</PrimaryButton>
       </TextFieldContainer>
+      <MenuButton onClick={() => setIsOpen(!isOpen)}>
+        <UilBars />
+      </MenuButton>
       <ButtonsContainer>
         <SecondaryButton>
           <UilBell />

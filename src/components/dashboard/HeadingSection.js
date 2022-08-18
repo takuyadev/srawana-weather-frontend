@@ -12,17 +12,23 @@ const HeadingContainer = styled.div`
     color: ${props => props.theme.colors.gray["800"]}
   }
   & a {
+    display:flex;
+    align-items:center;
+    gap: 0.5em;
     font-weight:bold;
     text-decoration: none;
     color ${props => props.theme.colors.primary["500"]}
   }
 `;
 
-function HeadingSection({ heading, link, href }) {
+function HeadingSection({ icon, heading, link, href }) {
   return (
     <HeadingContainer>
       <h3>{heading}</h3>
-      <a href={href}>{link}</a>
+      <a href={href}>
+        {link}
+        {icon && icon}
+      </a>
     </HeadingContainer>
   );
 }
@@ -30,7 +36,7 @@ function HeadingSection({ heading, link, href }) {
 HeadingSection.defaultProps = {
   heading: "Average Weekly Temperature",
   link: "Tokyo, Japan",
-  href: "google.ca"
+  href: "/"
 };
 
 export default HeadingSection;

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { TimeContextProvider } from "./modules/TimeContext";
 import { ThemeProvider } from "styled-components";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -18,7 +19,6 @@ const theme = {
       "700": "#384C8F",
       "800": "#243363",
       "900": "#121A33"
-      
     },
     gray: {
       "0": "#FFFFFF",
@@ -36,11 +36,11 @@ const theme = {
   fontSize: {
     "3xs": "0.512rem",
     "2xs": "0.64rem",
-    "xs": "0.8rem",
-    "s": "1rem",
-    "m": "1.25rem",
-    "l": "1.563rem",
-    "xl": "1.953rem",
+    xs: "0.8rem",
+    s: "1rem",
+    m: "1.25rem",
+    l: "1.563rem",
+    xl: "1.953rem",
     "2xl": "2.441rem",
     "3xl": "3.052rem"
   }
@@ -48,11 +48,13 @@ const theme = {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ThemeProvider theme={theme}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </ThemeProvider>
+  <TimeContextProvider>
+    <ThemeProvider theme={theme}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ThemeProvider>
+  </TimeContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

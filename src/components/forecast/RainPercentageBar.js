@@ -1,3 +1,4 @@
+// Node Modules
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -24,17 +25,17 @@ const Bar = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: ${props => (props.width ? props.width : "50")}%;
+    width: ${props => (props.width)}%;
     height: 100%;
     border-radius: 16px;
     background: ${props => props.theme.colors.primary["500"]};
   }
 `;
 
-function RainPercentageBar({ time, width }) {
+
+function RainPercentageBar({ width }) {
   return (
     <Container>
-      <Text>{time}</Text>
       <Bar width={width} />
       <Text>{width}%</Text>
     </Container>

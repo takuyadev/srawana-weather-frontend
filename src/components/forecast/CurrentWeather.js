@@ -1,3 +1,4 @@
+// Node Modules
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -15,6 +16,7 @@ const DegreeText = styled.h2`
 const WeatherText = styled.p`
   font-weight: normal;
   font-size: ${props => props.theme.fontSize["s"]};
+  text-transform: capitalize;
   color: ${props => props.theme.colors.gray["500"]};
 `;
 
@@ -32,7 +34,6 @@ function CurrentWeather({ temp, icon, weather }) {
   return (
     <Container>
       <Icon src={`https://openweathermap.org/img/w/${icon}.png`}></Icon>
-
       <InfoContainer>
         <DegreeText>{temp}&#176; C</DegreeText>
         <WeatherText>{weather}</WeatherText>
