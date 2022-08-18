@@ -1,4 +1,4 @@
-# Swrana Weather Design - Challenge
+# Srawana Weather Design - Challenge
 
 ### `The Challenge` 
 
